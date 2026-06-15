@@ -2,13 +2,13 @@
 
 [English](README.md)
 
-一个 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill，强制执行 Scala 开发规范——覆盖 **项目脚手架** 和 **日常编码标准**，支持 Scala 3、2.13、2.12。
+一个 **AI 编码 Agent skill**，强制执行 Scala 开发规范——覆盖 **项目脚手架** 和 **日常编码标准**，支持 Scala 3、2.13、2.12。主要为 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) 设计，但也兼容任何从 `~/.claude/skills/` 或 `~/.agents/skills/` 加载 skill 定义的 Agent。
 
 ## 功能概述
 
 ### 创建项目
 
-当你让 Claude 新建 Scala 项目时，本 skill 会确保：
+当你让 AI Agent 新建 Scala 项目时，本 skill 会确保：
 
 - **先问构建工具**："选 Mill 1.x 还是 sbt？推荐 Mill"
 - **询问包名**和 **HTTP 框架**（pekko-http / http4s / tapir）
@@ -19,7 +19,7 @@
 
 ### 开发规范
 
-当你让 Claude 编写或审查 Scala 代码时，本 skill 强制执行：
+当你让 AI Agent 编写或审查 Scala 代码时，本 skill 强制执行：
 
 | ✅ 推荐 | ❌ 禁止 |
 |---|---|
@@ -33,41 +33,31 @@
 
 ## 安装
 
-### 前置条件
-
-- 已安装 [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
-
-### 通过 Claude Code Registry（推荐）
-
-```bash
-claude mcp add scala-best-practices
-```
-
 ### 手动安装
+
+**Claude Code：**
 
 ```bash
 git clone git@github.com:weiwen99/scala-best-practices-skill.git ~/.claude/skills/scala-best-practices
 ```
 
-然后在 Claude Code 配置中添加：
+Claude Code 会自动加载 `~/.claude/skills/` 下的 skill，无需额外配置。
 
-```json
-{
-  "skills": {
-    "additionalDirectories": ["~/.claude/skills/scala-best-practices"]
-  }
-}
+**其他 AI Agent（从 `~/.agents/skills/` 读取）：**
+
+```bash
+git clone git@github.com:weiwen99/scala-best-practices-skill.git ~/.agents/skills/scala-best-practices
 ```
 
 ## 使用示例
 
 ### 创建新的 Scala 项目
 
-将以下 prompt 复制到 Claude Code：
+将以下 prompt 复制到你的 AI 编码 Agent：
 
 > 请帮我开一个新的Scala3项目，里面实现一个Http Service，提供一个API：/v1/ping，返回用户端的信息，尽可能详尽。注意遵循 scala-best-practices-skill SKILL 开发规范。
 
-Claude 会按以下流程执行：
+Agent 会按以下流程执行：
 1. 询问你选择 Mill 还是 sbt
 2. 询问包名
 3. 询问选择 pekko-http 还是 http4s（以及 tapir 还是原生）
@@ -96,7 +86,7 @@ Claude 会按以下流程执行：
 
 ```
 .
-├── SKILL.md                          # Skill 定义（Claude 读取此文件）
+├── SKILL.md                          # Skill 定义（AI Agent 读取此文件）
 ├── references/
 │   ├── ecosystem.md                  # PureConfig / Circe / Tapir / Slick / 测试 / 日志
 │   ├── formatting.md                 # .scalafmt.conf + .scalafix.conf（Scala 3 和 2）

@@ -2,13 +2,13 @@
 
 [中文版](README.zh.md)
 
-A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill that enforces Scala development conventions — covering both **project scaffolding** and **ongoing coding standards** for Scala 3, 2.13, and 2.12.
+An **AI coding agent skill** that enforces Scala development conventions — covering both **project scaffolding** and **ongoing coding standards** for Scala 3, 2.13, and 2.12. Primarily designed for [Claude Code](https://docs.anthropic.com/en/docs/claude-code), but compatible with any agent that loads skill definitions from `~/.claude/skills/` or `~/.agents/skills/`.
 
 ## What This Skill Does
 
 ### Project Creation
 
-When you ask Claude to create a new Scala project, this skill ensures:
+When you ask your AI agent to create a new Scala project, this skill ensures:
 
 - Asks you to choose **Mill 1.x or sbt** before creating any files
 - Asks for the **package name** and **HTTP framework** (pekko-http / http4s / tapir)
@@ -19,7 +19,7 @@ When you ask Claude to create a new Scala project, this skill ensures:
 
 ### Development Conventions
 
-When you ask Claude to write or review Scala code, this skill enforces:
+When you ask your AI agent to write or review Scala code, this skill enforces:
 
 | ✅ Do | ❌ Avoid |
 |---|---|
@@ -33,41 +33,31 @@ Full details: [ecosystem conventions](references/ecosystem.md), [naming & struct
 
 ## Installation
 
-### Prerequisites
-
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed
-
-### Via Claude Code Registry (Recommended)
-
-```bash
-claude mcp add scala-best-practices
-```
-
 ### Manual Installation
+
+**For Claude Code:**
 
 ```bash
 git clone git@github.com:weiwen99/scala-best-practices-skill.git ~/.claude/skills/scala-best-practices
 ```
 
-Then add to your Claude Code configuration:
+Claude Code automatically loads skills from `~/.claude/skills/` — no extra configuration needed.
 
-```json
-{
-  "skills": {
-    "additionalDirectories": ["~/.claude/skills/scala-best-practices"]
-  }
-}
+**For other AI agents (that read from `~/.agents/skills/`):**
+
+```bash
+git clone git@github.com:weiwen99/scala-best-practices-skill.git ~/.agents/skills/scala-best-practices
 ```
 
 ## Example Usage
 
 ### Create a New Scala Project
 
-Copy this prompt into Claude Code:
+Copy this prompt into your AI coding agent:
 
 > Please help me create a new Scala 3 project with an HTTP Service that provides an API: /v1/ping, which returns client-side information in as much detail as possible. Follow the scala-best-practices-skill SKILL conventions.
 
-Claude will then:
+The agent will then:
 1. Ask you to choose Mill or sbt
 2. Ask for the package name
 3. Ask you to choose pekko-http or http4s (and tapir vs native)
@@ -96,7 +86,7 @@ See [SKILL.md](SKILL.md) for the Scala 2 syntax compatibility table.
 
 ```
 .
-├── SKILL.md                          # Skill definition (Claude reads this)
+├── SKILL.md                          # Skill definition (the AI agent reads this)
 ├── references/
 │   ├── ecosystem.md                  # PureConfig / Circe / Tapir / Slick / Testing / Logging
 │   ├── formatting.md                 # .scalafmt.conf + .scalafix.conf (Scala 3 & 2)
