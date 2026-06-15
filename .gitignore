@@ -1,0 +1,52 @@
+# Mill
+out/
+
+# Scala / sbt fallbacks
+target/
+project/project/
+project/target/
+
+# Metals / Bloop / BSP
+.bloop/
+.bsp/
+.metals/
+.scala-build/
+metals.sbt
+
+# IDE
+.idea/
+.idea_modules/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# JVM
+hs_err_pid*.log
+replay_pid*.log
+
+# Editor
+*~
+\#*\#
+.\#*
+
+# Local secrets / config
+.env
+.env.local
+*.local.conf
+
+.claude/
+
+# Superpowers brainstorming visual companion cache
+.superpowers/
+
+.os-lib-watch-*
+
+# Web UI (Vite + Vue 3)
+node_modules/
+.vite
+
+output/
+logs/

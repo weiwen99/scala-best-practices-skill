@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <property name="logbackLogLevel" value="${LOGBACK_LEVEL:-INFO}" />
+
+  <!-- Console appender with optional colored output -->
+  <!-- <if> requires janino on the runtime classpath. Add the dependency:
+       Mill:  mvnDeps = Seq(mvn"org.codehaus.janino:janino:3.1.12")
+       sbt:   libraryDependencies += "org.codehaus.janino" % "janino" % "3.1.12"
+  -->
+  <if condition='isDefined("CONSOLE_LOG_NO_COLOR")'>
+    <then>
+      <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+          <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} L%L - %msg%n</pattern>
+        </encoder>
+      </appender>
+    </then>
+    <else>
+      <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+          <pattern>%d{HH:mm:ss.SSS} %highlight(%-5level) %cyan(%logger{36}) L%L - %green(%msg) %n</pattern>
+        </encoder>
+      </appender>
+    </else>
+  </if>
+
+  <!-- Rolling file appender: writes to ./logs -->
+  <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/app.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>logs/app.%d{yyyy-MM-dd-HH}.log</fileNamePattern>
+      <maxHistory>60</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} L%L - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="${logbackLogLevel}">
+    <appender-ref ref="ROLLING_FILE"/>
+    <appender-ref ref="CONSOLE"/>
+  </root>
+
+</configuration>
