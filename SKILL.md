@@ -1,12 +1,18 @@
 ---
 name: scala-best-practices
 description: >-
-  ALWAYS ask "Mill 1.x or sbt? Recommend Mill" before creating any files.
-  Mill strictly forbids Agg/ivy/T{}, must use Seq/mvn/mvnDeps.
+  Scala 3 conventions for project creation and ongoing development.
+  ALWAYS ask first: "Mill 1.x or sbt? Recommend Mill"; ask package name.
+  Mill 1.x only: Seq/mvn/mvnDeps, never Agg/ivy/T{}.
   Foundation files: .scalafmt.conf .scalafix.conf fix.sh check.sh application.conf logback.xml run.sh.
-  Functional immutable Either explicit return types.
-  This skill covers BOTH project creation AND ongoing development conventions.
-  触发词 / Triggers: scala-best-practices scala3-best-practices create Scala project create scala3 project new Scala 3 project scala3 development conventions scala best practices scala3 best practices scaffold start a new project scala3 project scala3 coding style scala3 code style scala3 style guide scala3 code review scala conventions check how to write scala code scala3 patterns Either error handling functional programming scala immutable scala given using scala3 explicit return type scala3 dos and donts build.mill mvnDeps 创建 Scala 项目 新建 Scala3 项目 新建 Scala 3 项目 scala3 开发 规范 scala 规范 scala 开发规范 scala3 开发规范 scala 最佳实践 Scala3 最佳实践 开一个新项目 scala3 项目 scala3 代码风格 scala3 编码规范 函数式编程 Either 错误处理 不可变 显式返回类型 代码审查
+  Functional, immutable, Either errors, explicit return types.
+  Triggers: scala scala3 scala-best-practices create Scala project create scala3 project
+  new Scala 3 project scala3 project scala3 development conventions scala best practices
+  scala3 best practices scala3 coding style scala3 code style scala3 style guide scala3 code review
+  scala conventions how to write scala code scala3 patterns scala3 dos and donts Either error handling
+  functional programming immutable given/using explicit return type build.mill mvnDeps
+  Scala 项目 创建 Scala 项目 新建 Scala3 项目 新建 Scala 3 项目 scala3 开发规范 scala 开发规范 scala 规范 scala 最佳实践
+  Scala3 最佳实践 scala3 项目 scala3 代码风格 scala3 编码规范 函数式编程 Either 错误处理 不可变 显式返回类型 代码审查
 tags: [scala, scala3, best-practices, conventions]
 author: weiwen99
 user-invocable: true
