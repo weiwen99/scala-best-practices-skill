@@ -2,6 +2,8 @@
 
 [English](README.md)
 
+> **已迁移。** 本 skill 现在位于 [weiwen99/agent-assets](https://github.com/weiwen99/agent-assets) 的 `skills/scala-best-practices/`。本仓已归档为只读；历史与 issue 保留在这里。
+
 一个 **AI 编码 Agent skill**，强制执行 Scala 开发规范——覆盖 **项目脚手架** 和 **日常编码标准**，支持 Scala 3、2.13、2.12。主要为 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) 设计，但也兼容任何从 `~/.claude/skills/` 或 `~/.agents/skills/` 加载 skill 定义的 Agent。
 
 ## 功能概述

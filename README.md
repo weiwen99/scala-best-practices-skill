@@ -2,6 +2,8 @@
 
 [中文版](README.zh.md)
 
+> **Moved.** This skill now lives in [weiwen99/agent-assets](https://github.com/weiwen99/agent-assets) under `skills/scala-best-practices/`. This repository is archived and read-only; history and issues stay here.
+
 An **AI coding agent skill** that enforces Scala development conventions — covering both **project scaffolding** and **ongoing coding standards** for Scala 3, 2.13, and 2.12. Primarily designed for [Claude Code](https://docs.anthropic.com/en/docs/claude-code), but compatible with any agent that loads skill definitions from `~/.claude/skills/` or `~/.agents/skills/`.
 
 ## What This Skill Does
